@@ -13,5 +13,5 @@ public class User
     public string LastName { get; set; }
     public string Password { get; set; }
     public string Email {get; set;}
-    public List<Blog> Blogs;
+    public List<Blog> Blogs {get; set;}
 }

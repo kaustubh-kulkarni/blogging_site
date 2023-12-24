@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 namespace Domain
 {
     //This is model for Blogs
-    //A typical blog will contain Id, Content
+    //A typical blog will contain Id, Title and Content
     public class Blog
     {
-        public Guid Id { get; set; }
+        public Guid BlogId { get; set; }
+        public string Title {get; set;}
         public string Content { get; set; }
+        public User User {get; set;}
     }
 }
