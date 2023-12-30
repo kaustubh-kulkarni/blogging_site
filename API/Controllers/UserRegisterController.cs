@@ -25,7 +25,7 @@ namespace API.Controllers
 
         //Method to register a user and add it to DB
         [HttpPost]
-        public async Task<ActionResult<User>> Register(RegisterDto registerDto)
+        public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
             //Check if the user already exists, if so we cannot register it
             var username = await _context.Users.FirstOrDefaultAsync(x => x.FirstName.ToLower() == registerDto.FirstName);
@@ -50,10 +50,10 @@ namespace API.Controllers
             await _context.SaveChangesAsync();
 
             //return it
-            return new User{
+            return new UserDto{
                 FirstName = registerDto.FirstName,
                 LastName = registerDto.LastName,
-                Email = registerDto.Email
+                Email = registerDto.Email,
             };
         }
     }
