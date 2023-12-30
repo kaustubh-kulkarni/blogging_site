@@ -13,6 +13,7 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class UserLoginController : ControllerBase
     {
+        //Get the DatabaseContext to query against
         private readonly DatabaseContext _context;
         //Default CTOR
         public UserLoginController(DatabaseContext context)
