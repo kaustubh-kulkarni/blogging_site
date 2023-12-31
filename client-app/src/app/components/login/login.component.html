@@ -1,1 +1,21 @@
-<p>login works!</p>
+<div class="text-center">
+    <h2>Please login to view your profile and blogs</h2>
+</div>
+
+<div style="margin-top: 20px;" class="d-flex justify-content-center">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label class="form-label" for="first-name">Firstname as username </label>
+            <input class="form-control" id="first-name" type="text" formControlName="firstName">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="password">Password </label>
+            <input class="form-control" id="password" type="password" formControlName="password">
+        </div>
+
+        <div class="form-group text-center">
+            <button [disabled]="!loginForm.valid" style="margin-top: 10px;" type="submit" class="btn btn-primary">Login</button>
+        </div>
+    </form>
+</div>
