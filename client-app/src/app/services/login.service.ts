@@ -16,8 +16,7 @@ export class LoginService{
     login(user: User){
         return this.http.post(this.baseUrl + 'UserLogin', user).pipe(
             map((response: any) => {
-                const user = response;
-                console.info(user.firstname);
+                user = response; 
             })
         )
     }

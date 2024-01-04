@@ -2,20 +2,22 @@ import { Component, OnInit, importProvidersFrom } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [ReactiveFormsModule, HttpClientModule],
-  providers: [LoginService],
+  providers: [LoginService, Router],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
-  constructor(private loginService: LoginService){}
+  validationErrors: string[] = [];
+  constructor(private loginService: LoginService, private router: Router){}
 
   ngOnInit(): void{
     this.initializeForm();
@@ -32,7 +34,9 @@ export class LoginComponent implements OnInit {
     console.info(this.loginForm.value);
     //Call in the login service
     this.loginService.login(this.loginForm.value).subscribe(res => {
-      console.info(res);
+      this.router.navigateByUrl('/');
+    }, error => {
+      this.validationErrors = error;
     })
   }
 
