@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     console.info(this.loginForm.value);
     //Call in the login service
     this.loginService.login(this.loginForm.value).subscribe(res => {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('');
     }, error => {
       this.validationErrors = error;
     })
