@@ -13,6 +13,8 @@ public class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        //Add cors service
+        builder.Services.AddCors();
 
         builder.Services.AddDbContextPool<DatabaseContext>(opt => {
             opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -28,6 +30,8 @@ public class Program
         }
 
         
+
+        app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
 
         app.UseHttpsRedirection();
 

@@ -3,7 +3,7 @@
 </div>
 
 <div style="margin-top: 20px;" class="d-flex justify-content-center">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="form-group">
             <label class="form-label" for="first-name">Firstname as username </label>
             <input class="form-control" id="first-name" type="text" formControlName="firstName">
